@@ -35,16 +35,6 @@ public class WorkerResource {
     @GetMapping(value = "/{id}")
     public ResponseEntity<Worker> findById(@PathVariable Long id) throws InterruptedException {
 
-        // Com isso o microservice deve retornar o getPaymentAlternative configurado no @HystrixCommand(fallbackMethod = "getPaymentAlternative")
-
-        // Para simulara um error de timeout com 5 segundos
-        // Por padrão o tempo do Ribbon é 1 segundo
-        // O Ribbon nem era o tempo de 5 segundos, assim que o seu tempo padrão é excedido ele já retorna o getPaymentAlternative
-        Thread.sleep(5000L);
-
-        // Para simulara um erro qualquer
-        throw new RuntimeException("Criar uma excption aqui só para simulara um error");
-
         logger.info("PORT = " + env.getProperty("local.server.port"));
 
         Worker obj = repo.findById(id).get();
