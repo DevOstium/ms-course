@@ -26,7 +26,7 @@ public class UserResource {
     }
 
     // Uso o @RequestParam quando = http:localhost:8080/users/search?email=fagnerlira@hotmail.com
-    // Com o param fica opcional
+    // Assim o param fica opcional
     @GetMapping(value = "/search")
     public ResponseEntity<User> findByEmail(@RequestParam String email) {
         User obj = repo.findByEmail(email);
